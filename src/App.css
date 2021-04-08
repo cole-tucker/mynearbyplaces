@@ -1,0 +1,20 @@
+.card{
+    background-color: rgb(231, 231, 231) !important;
+    width: 200px;
+    margin-bottom: 10px;
+    width: 100px;
+}
+  
+.card-img {
+    width: 200px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
