@@ -3,14 +3,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {useHistory} from 'react-router-dom';
 import React, { useState } from "react";
-import reviews from "./reviews";
+import business from "./data";
+import api from "../communication/api"
 
-function AddReview (props) {
+function AddReview () {
     const history = useHistory();
     const [businessName, setBusiness] = useState('');
     const [review, setReview] = useState('');
-    const [store, setWholeBusiness] = useState('');
+    const [setWholeBusiness] = useState('');
     const [rating, setRating] = useState('');
+    const [message, setMessage] = useState('');
+    
     let onBusinessChange = (event) => {
         setBusiness(event.target.value)
     }
@@ -24,7 +27,17 @@ function AddReview (props) {
         setRating(event.target.value)
     }
     function handleAdd() {
-        reviews.push({id: reviews.length, businessName, store, review, rating});
+        let newReview = {name: businessName, business: business, review : review, rating : rating}
+        console.log(newReview.businessName);
+        api.saveReviews(newReview)
+        .then(() => {console.log(`The review by ${businessName} was added successfully`);
+        setWholeBusiness('');
+        setBusiness('');
+        setReview('');
+        setRating('');
+        })
+        .catch(e => {console.log(e); setMessage (`There was an error in adding the review by ${businessName}`);});
+        console.log(message);
         history.push('/');
     }
     return (
@@ -39,9 +52,7 @@ function AddReview (props) {
                         <Form.Control type="input" id="rating" placeholder="Your rating out of 5" onChange={onRatingChange} />
                         <br></br>
                     </Form.Group>
-                    <Button class="btn btn-success" type="submit">
-                        Submit
-                        </Button>
+                    <Button class="btn btn-success" type="submit">Submit</Button>
                 </Form>
             </Col>
         </Row>

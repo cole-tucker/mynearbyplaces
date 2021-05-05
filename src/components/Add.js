@@ -3,13 +3,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {useHistory} from 'react-router-dom';
 import React, { useState } from "react";
-import store from "./data";
+import api from "../communication/api"
 
 function Add () {
     const history = useHistory();
     const [businessName, setBusiness] = useState('');
     const [image, setImage] = useState('');
     const [address, setAddress] = useState('');
+    const [message, setMessage] = useState('');
 
     let onBusinessChange = (event) => {
         setBusiness(event.target.value)
@@ -21,7 +22,16 @@ function Add () {
         setImage(event.target.value)
     }
     function handleAdd() {
-        store.push({id: store.length, businessName, image, address});
+        let place = {name: businessName, address: address, image: image}
+        console.log(place.businessName);
+        api.savePlace(place)
+        .then(() => {console.log(`The place ${businessName} was added successfully`);
+        setBusiness('');
+        setAddress('');
+        setImage('');
+        })
+        .catch(e => {console.log(e); setMessage (`There was an error in adding the place ${businessName}`);});
+        console.log(message);
         history.push('/');
     }
     return (
