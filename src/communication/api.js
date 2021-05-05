@@ -1,17 +1,17 @@
-let apiHost = "https://coletucker-mynearbyplaces-api.herokuapp.com/"
+let apiUrl = "https://coletucker-mynearbyplaces-api.herokuapp.com/"
 
 let getPlaces = () => {
-    return fetch(apiHost + '/places')
+    return fetch(apiUrl + '/places')
     .then (response => response.json());
 }
 
 let getReviews = () => {
-    return fetch(apiHost + '/reviews')
+    return fetch(apiUrl + '/reviews')
     .then (response => response.json());
 }
 
-let savePlace = (place) => {
-    return fetch(apiHost + '/addPlace', {
+let addPlace = (place) => {
+    return fetch(apiUrl + '/addPlace', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -20,8 +20,8 @@ let savePlace = (place) => {
     });
 }
 
-let saveReviews = (place) => {
-    return fetch(apiHost + '/addReview', {
+let addReviews = (place) => {
+    return fetch(apiUrl + '/addReview', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ let saveReviews = (place) => {
 }
 
 let deletePlace = (place) => {
-    return fetch(apiHost + '/deletePlace', {
+    return fetch(apiUrl + '/deletePlace', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ let deletePlace = (place) => {
 }
 
 let editPlace = (place) => {
-    return fetch(apiHost + '/editPlace', {
+    return fetch(apiUrl + '/editPlace', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -53,10 +53,10 @@ let editPlace = (place) => {
 let api = {
     getPlaces : getPlaces,
     getReviews : getReviews,
-    savePlace : savePlace,
+    addPlace : addPlace,
     deletePlace : deletePlace,
     editPlace : editPlace,
-    saveReviews : saveReviews
+    addReviews : addReviews
 };
 
 export default api;

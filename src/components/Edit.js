@@ -27,9 +27,8 @@ function Edit () {
     }
     function handleEdit() {
         let place = {name: businessName, address: address, image: image, id: location.state.id}
-        console.log(place.businessName);
         api.editPlace(place)
-        .then(() => {console.log(`The place ${businessName} was added successfully`);
+        .then(() => {
         setBusiness('');
         setAddress('');
         setImage('');

@@ -17,9 +17,8 @@ let reviews = [
     { id: 2,
         store: "Popeyes",
         businessName: "Colnel Sanders",
-    review: "Ya know, compared to Kentucky Fried Chicken, this place stinks!",
-    rating: "-1"
-        
+        review: "Ya know, compared to Kentucky Fried Chicken, this place stinks!",
+        rating: "-1"
     }
 ];
 

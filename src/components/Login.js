@@ -7,7 +7,6 @@ import React, { useState } from "react";
 function Login (props) {
     const history = useHistory();
     const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
 
     let onLoginSubmitted = () => {
         history.push('/');

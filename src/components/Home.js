@@ -6,16 +6,6 @@ import api from "../communication/api";
 
 function Home() {
     const [places, setPlaces] = useState([]);
-    // function deleteBusiness(id) {
-    //     let place = {id : location.state.id}
-    //     console.log(place.id)
-    //     api.deletePlace(place)
-    //     .then(() => {console.log(`The place ${place.id} was added successfully`);
-    //     })
-    //     .catch(e => {console.log(e); setMessage (`There was an error in adding the place ${place.id}`);});
-    //     console.log(message);
-    //     history.push('/');
-    // }
     useEffect(() => {
         if (places.length === 0) {
           api.getPlaces()

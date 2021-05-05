@@ -10,7 +10,7 @@ function AddReview () {
     const history = useHistory();
     const [businessName, setBusiness] = useState('');
     const [review, setReview] = useState('');
-    const [setWholeBusiness] = useState('');
+    const [wholeBusiness] = useState('');
     const [rating, setRating] = useState('');
     const [message, setMessage] = useState('');
     
@@ -27,16 +27,15 @@ function AddReview () {
         setRating(event.target.value)
     }
     function handleAdd() {
-        let newReview = {name: businessName, business: business, review : review, rating : rating}
-        console.log(newReview.businessName);
-        api.saveReviews(newReview)
-        .then(() => {console.log(`The review by ${businessName} was added successfully`);
+        let newReview = {name: businessName, business: wholeBusiness, review : review, rating : rating}
+        api.addReviews(newReview)
+        .then(() => {
         setWholeBusiness('');
         setBusiness('');
         setReview('');
         setRating('');
         })
-        .catch(e => {console.log(e); setMessage (`There was an error in adding the review by ${businessName}`);});
+        .catch(e => {console.log(e); setMessage (`There was an error in adding the review for ${businessName}`);});
         console.log(message);
         history.push('/');
     }

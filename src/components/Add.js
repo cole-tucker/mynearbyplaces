@@ -23,14 +23,13 @@ function Add () {
     }
     function handleAdd() {
         let place = {name: businessName, address: address, image: image}
-        console.log(place.businessName);
-        api.savePlace(place)
-        .then(() => {console.log(`The place ${businessName} was added successfully`);
+        api.addPlace(place)
+        .then(() => {
         setBusiness('');
         setAddress('');
         setImage('');
         })
-        .catch(e => {console.log(e); setMessage (`There was an error in adding the place ${businessName}`);});
+        .catch(e => {console.log(e); setMessage (`Error in adding ${businessName}`);});
         console.log(message);
         history.push('/');
     }
